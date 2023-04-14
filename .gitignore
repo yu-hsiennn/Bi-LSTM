@@ -1,0 +1,10 @@
+ckpt/
+result/
+
+*.gif
+*.mp4
+*.txt
+*.out
+*.sh
+
+test.py
