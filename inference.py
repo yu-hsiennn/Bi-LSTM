@@ -9,7 +9,7 @@ from visualize import AnimePlot
 
 class Inference:
     def __init__(self, joint_def, model, data_dir) -> None:
-        with open("Tpose/T_pose_normalize_x_inverse.pkl", 'rb')as fpick:
+        with open("Tpose/T-pos-fullbody-normalize.pkl", 'rb')as fpick:
             self.TPose = pickle.load(fpick)[0]
         self.joint_def = joint_def
         self.model = model

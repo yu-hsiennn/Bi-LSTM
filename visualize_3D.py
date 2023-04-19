@@ -3,8 +3,14 @@ import pickle
 import numpy as np
 import argparse
 from matplotlib import animation
-from utils import joint, jointChain
+from utils import Lab_skeleton
 from evaluate import kalman_filter
+
+lab_joints = Lab_skeleton()
+joint = lab_joints.get_joint()
+jointChain = lab_joints.get_joints_chain()
+
+painting = {}
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file', type=str, nargs='+', required=True)# file path(pkl/pickle)
@@ -42,11 +48,16 @@ def init():
         figure.set_xlabel('x')
         figure.set_ylabel('y')
         figure.set_zlabel('z')
-        figure.set_xlim(-.5*args.scale, .5*args.scale)
-        figure.set_ylim(-.5*args.scale, .5*args.scale)
-        figure.set_zlim(-.5*args.scale, .5*args.scale)
+        figure.set_xlim(-.6*args.scale, .6*args.scale)
+        figure.set_ylim(-.6*args.scale, .6*args.scale)
+        figure.set_zlim(-.6*args.scale, .6*args.scale)
         figure.axis('off') #hide axes
         figure.view_init(elev=130,azim=-90)
+        # figure.set_xlim(-.5*args.scale, .5*args.scale)
+        # figure.set_ylim(-.5*args.scale, .5*args.scale)
+        # figure.set_zlim(-.5*args.scale, .5*args.scale)
+        # figure.axis('off') #hide axes
+        # figure.view_init(elev=130,azim=-90)
 
 def update(i):
     for figure in ax:
@@ -56,21 +67,24 @@ def update(i):
         for idx, chain in enumerate(jointChain):
             pre_node = joint[chain[0]]
             next_node = joint[chain[1]]
-            x = -np.array([motion[i, pre_node, 0], motion[i, next_node, 0]])
+            x = np.array([motion[i, pre_node, 0], motion[i, next_node, 0]])
             y = np.array([motion[i, pre_node, 1], motion[i, next_node, 1]])
             z = np.array([motion[i, pre_node, 2], motion[i, next_node, 2]])
-            if 8 <= idx < 14:
-                # X:right O:left ,blue
+            if idx < 8:
+                # right, red
+                ax[f].plot(x, y, z, color="#e74c3c")
+            elif 8 <= idx < 14:
+                # left ,blue
                 ax[f].plot(x, y, z, color="#3498db")
-            elif idx == 14 or idx == 16:
-                ax[f].plot(x, y, z, color='green')
-            elif idx == 15 or idx == 17:
+            elif idx == 14 or idx == 15:
                 ax[f].plot(x, y, z, color='cyan')
-            elif idx == 18 or idx == 19:
+            elif idx % 3 == 1:
+                ax[f].plot(x, y, z, color='green')
+            elif idx % 3 == 2:
                 ax[f].plot(x, y, z, color='navy')
             else:
-                # X:left O:right
-                ax[f].plot(x, y, z, color="#e74c3c")
+                ax[f].plot(x, y, z, color="magenta")
+
 
 motionList = loadData()
 ani = animation.FuncAnimation(fig, update, len(motionList[0]), interval=1,init_func=init)

@@ -51,6 +51,12 @@ class Lab_skeleton():
 
     def get_joints_connect(self):
         return self.jointsConnect
+    
+    def get_joints_index(self):
+        return self.jointIndex
+    
+    def get_joints_chain(self):
+        return self.jointsChain
 
 class AverageMeter(object):
     def __init__(self):

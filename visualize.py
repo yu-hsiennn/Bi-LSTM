@@ -1,12 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from utils import joint, jointChain
+from utils import Lab_skeleton
 
 class AnimePlot():
     def __init__(self):
         self.fig = plt.figure()
         self.ax = []
+        self.Lab_joints = Lab_skeleton()
+        self.joint = self.Lab_joints.get_joint()
+        self.jointChain = self.Lab_joints.get_joints_chain()
     
     def set_fig(self, labels, save_path, scale = 2.5):
         self.scale = scale
@@ -43,24 +46,31 @@ class AnimePlot():
             figure.lines.clear()
             figure.collections.clear()
         for f, motion in enumerate(self.data):
-            for idx, chain in enumerate(jointChain):
-                pre_node = joint[chain[0]]
-                next_node = joint[chain[1]]
+            for idx, chain in enumerate(self.jointChain):
+                pre_node = self.joint[chain[0]]
+                next_node = self.joint[chain[1]]
                 x = -np.array([motion[i, pre_node, 0], motion[i, next_node, 0]])
                 y = np.array([motion[i, pre_node, 1], motion[i, next_node, 1]])
                 z = np.array([motion[i, pre_node, 2], motion[i, next_node, 2]])
-                if 8 <= idx < 14:
-                    # X:right O:left ,blue
+                if idx < 8:
+                    # right, red
+                    self.ax[f].plot(x, y, z, color="#e74c3c")
+                elif 8 <= idx < 14:
+                    # left ,blue
                     self.ax[f].plot(x, y, z, color="#3498db")
-                elif idx == 14 or idx == 16: # index
-                    self.ax[f].plot(x, y, z, color='green')
-                elif idx == 15 or idx == 17: # pinky
+                elif idx == 14 or idx == 15:
+                    # foot 
                     self.ax[f].plot(x, y, z, color='cyan')
-                elif idx == 18 or idx == 19:
+                elif idx % 3 == 1:
+                    # part 1 of finger
+                    self.ax[f].plot(x, y, z, color='green')
+                elif idx % 3 == 2:
+                    # part 2 of finger
                     self.ax[f].plot(x, y, z, color='navy')
                 else:
-                    # X:left O:right
-                    self.ax[f].plot(x, y, z, color="#e74c3c")
+                    # part 3 of finger
+                    self.ax[f].plot(x, y, z, color="magenta")
+
         self.time_text.set_text(str(i))
 
     def animate(self):
@@ -69,6 +79,7 @@ class AnimePlot():
         writergif = animation.PillowWriter(fps = 5)
         self.anime.save(f, writer=writergif)
         # To be fix 
-        # writervideo = animation.FFMpegWriter(fps = 10)
-        # f = f"{self.save_path}.mp4"
-        # self.anime.save(f, writer=writervideo)
+        writervideo = animation.FFMpegWriter(fps = 10)
+        f = f"{self.save_path}.mp4"
+        self.anime.save(f, writer=writervideo)
+        

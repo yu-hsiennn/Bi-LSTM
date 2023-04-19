@@ -2,8 +2,13 @@ import pickle
 import numpy as np
 import os, re, random
 import torch
-from utils import jointIndex, jointConnect
+from utils import Lab_skeleton
 # get_data 將所有的資料包裝成很長的序列，所有檔案的資料都在同一個 data['x'] 內，因此檔案數量不會和 mpjpe 個數相同
+
+Lab_joints = Lab_skeleton()
+jointIndex = Lab_joints.get_joints_index()
+jointConnect = Lab_joints.get_joints_connect()
+
 def get_data(dataset, dir, ca, inp_len, out_len, randomInput): # for train 
     filepath = os.path.join("../Dataset", dataset, dir)
     files = os.listdir(filepath)
@@ -115,6 +120,7 @@ def get_position(v, angles):
 
 def calculate_angle(fullbody):
     AngleList = np.zeros_like(fullbody)
+
     for i, frame in enumerate(fullbody):
         for joint in jointConnect:
             v = frame[joint[0]:joint[0]+3] - frame[joint[1]:joint[1]+3]
