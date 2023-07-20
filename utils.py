@@ -26,18 +26,18 @@ class Lab_skeleton():
             ["RightShoulder", "Neck"], ["RightArm", "RightShoulder"], ["RightHand", "RightArm"],
             ["RightThigh", "Pelvis"], ["RightKnee", "RightThigh"], ["RightAnkle", "RightKnee"],
             ["LeftShoulder", "Neck"], ["LeftArm", "LeftShoulder"], ["LeftHand", "LeftArm"], 
-            ["LeftThigh", "Pelvis"], ["LeftKnee", "LeftThigh"], ["LeftAnkle", "LeftKnee"],
-            ["LeftToeBase", "LeftAnkle"], ["RightToeBase", "RightAnkle"],
-            ["LeftHandThumb1", "LeftHand"], ["LeftHandThumb2", "LeftHandThumb1"], ["LeftHandThumb3", "LeftHandThumb2"],
-            ["LeftHandIndex1", "LeftHand"], ["LeftHandIndex2", "LeftHandIndex1"], ["LeftHandIndex3", "LeftHandIndex2"],
-            ["LeftHandMiddle1", "LeftHand"], ["LeftHandMiddle2", "LeftHandMiddle1"], ["LeftHandMiddle3", "LeftHandMiddle2"],
-            ["LeftHandRing1", "LeftHand"], ["LeftHandRing2", "LeftHandRing1"], ["LeftHandRing3", "LeftHandRing2"],
-            ["LeftHandPinky1", "LeftHand"], ["LeftHandPinky2", "LeftHandPinky1"], ["LeftHandPinky3", "LeftHandPinky2"],
-            ["RightHandThumb1", "RightHand"], ["RightHandThumb2", "RightHandThumb1"], ["RightHandThumb3", "RightHandThumb2"],
-            ["RightHandIndex1", "RightHand"], ["RightHandIndex2", "RightHandIndex1"], ["RightHandIndex3", "RightHandIndex2"],
-            ["RightHandMiddle1", "RightHand"], ["RightHandMiddle2", "RightHandMiddle1"], ["RightHandMiddle3", "RightHandMiddle2"],
-            ["RightHandRing1", "RightHand"], ["RightHandRing2", "RightHandRing1"], ["RightHandRing3", "RightHandRing2"],
-            ["RightHandPinky1", "RightHand"], ["RightHandPinky2", "RightHandPinky1"], ["RightHandPinky3", "RightHandPinky2"]
+            ["LeftThigh", "Pelvis"], ["LeftKnee", "LeftThigh"], ["LeftAnkle", "LeftKnee"]
+            # ["LeftToeBase", "LeftAnkle"], ["RightToeBase", "RightAnkle"],
+            # ["LeftHandThumb1", "LeftHand"], ["LeftHandThumb2", "LeftHandThumb1"], ["LeftHandThumb3", "LeftHandThumb2"],
+            # ["LeftHandIndex1", "LeftHand"], ["LeftHandIndex2", "LeftHandIndex1"], ["LeftHandIndex3", "LeftHandIndex2"],
+            # ["LeftHandMiddle1", "LeftHand"], ["LeftHandMiddle2", "LeftHandMiddle1"], ["LeftHandMiddle3", "LeftHandMiddle2"],
+            # ["LeftHandRing1", "LeftHand"], ["LeftHandRing2", "LeftHandRing1"], ["LeftHandRing3", "LeftHandRing2"],
+            # ["LeftHandPinky1", "LeftHand"], ["LeftHandPinky2", "LeftHandPinky1"], ["LeftHandPinky3", "LeftHandPinky2"],
+            # ["RightHandThumb1", "RightHand"], ["RightHandThumb2", "RightHandThumb1"], ["RightHandThumb3", "RightHandThumb2"],
+            # ["RightHandIndex1", "RightHand"], ["RightHandIndex2", "RightHandIndex1"], ["RightHandIndex3", "RightHandIndex2"],
+            # ["RightHandMiddle1", "RightHand"], ["RightHandMiddle2", "RightHandMiddle1"], ["RightHandMiddle3", "RightHandMiddle2"],
+            # ["RightHandRing1", "RightHand"], ["RightHandRing2", "RightHandRing1"], ["RightHandRing3", "RightHandRing2"],
+            # ["RightHandPinky1", "RightHand"], ["RightHandPinky2", "RightHandPinky1"], ["RightHandPinky3", "RightHandPinky2"]
         ]
 
         self.jointIndex = {}

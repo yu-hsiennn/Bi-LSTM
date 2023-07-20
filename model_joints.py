@@ -16,11 +16,11 @@ Definition:
             "LeftHandRing1",
             "LeftHandPinky1" (7 joints)
 
-- left thumb: "LeftHandThumb1", "LeftHandThumb2", "LeftHandThumb3" (3 joints)
-- left index: "LeftHandIndex1", "LeftHandIndex2", "LeftHandIndex3" (3 joints)
-- left middle: "LeftHandMiddle1", "LeftHandMiddle2", "LeftHandMiddle3" (3 joints)
-- left ring: "LeftHandRing1", "LeftHandRing2", "LeftHandRing3" (3 joints)
-- left pinky: "LeftHandPinky1", "LeftHandPinky2", "LeftHandPinky3" (3 joints)
+- left thumb: "LeftHand", "LeftHandThumb1", "LeftHandThumb2", "LeftHandThumb3" (4 joints)
+- left index: "LeftHand", "LeftHandIndex1", "LeftHandIndex2", "LeftHandIndex3" (4 joints)
+- left middle: "LeftHand", "LeftHandMiddle1", "LeftHandMiddle2", "LeftHandMiddle3" (4 joints)
+- left ring: "LeftHand", "LeftHandRing1", "LeftHandRing2", "LeftHandRing3" (4 joints)
+- left pinky: "LeftHand", "LeftHandPinky1", "LeftHandPinky2", "LeftHandPinky3" (4 joints)
 
 - right hand: "RightArm", "RightHand",
             "RightHandThumb1", 
@@ -29,11 +29,11 @@ Definition:
             "RightHandRing1", 
             "RightHandPinky1" (7 joints)
 
-- right thumb: "RightHandThumb1", "RightHandThumb2", "RightHandThumb3" (3 joints)
-- right index: "RightHandIndex1", "RightHandIndex2", "RightHandIndex3" (3 joints)
-- right middle: "RightHandMiddle1", "RightHandMiddle2", "RightHandMiddle3" (3 joints)
-- right ring: "RightHandRing1", "RightHandRing2", "RightHandRing3" (3 joints)
-- right pinky: "RightHandPinky1", "RightHandPinky2", "RightHandPinky3" (3 joints)
+- right thumb: "RightHand", "RightHandThumb1", "RightHandThumb2", "RightHandThumb3" (4 joints)
+- right index: "RightHand", "RightHandIndex1", "RightHandIndex2", "RightHandIndex3" (4 joints)
+- right middle: "RightHand", "RightHandMiddle1", "RightHandMiddle2", "RightHandMiddle3" (4 joints)
+- right ring: "RightHand", "RightHandRing1", "RightHandRing2", "RightHandRing3" (4 joints)
+- right pinky: "RightHand", "RightHandPinky1", "RightHandPinky2", "RightHandPinky3" (4 joints)
 
 - left foot: LeftKnee, LeftAnkle, LeftToeBase (3 joints)
 - right foot: RightKnee, RightAnkle, RightToeBase (3 joints)
@@ -52,16 +52,16 @@ class JointDefV6:
         self.n_joints_part['LeftHand'] = 21
         self.n_joints_part['RightHand'] = 21
 
-        self.n_joints_part['LeftThumb'] = 9
-        self.n_joints_part['LeftIndex'] = 9
-        self.n_joints_part['LeftMiddle'] = 9
-        self.n_joints_part['LeftRing'] = 9
-        self.n_joints_part['LeftPinky'] = 9
-        self.n_joints_part['RightThumb'] = 9
-        self.n_joints_part['RightIndex'] = 9
-        self.n_joints_part['RightMiddle'] = 9
-        self.n_joints_part['RightRing'] = 9
-        self.n_joints_part['RightPinky'] = 9
+        self.n_joints_part['LeftThumb'] = 12
+        self.n_joints_part['LeftIndex'] = 12
+        self.n_joints_part['LeftMiddle'] = 12
+        self.n_joints_part['LeftRing'] = 12
+        self.n_joints_part['LeftPinky'] = 12
+        self.n_joints_part['RightThumb'] = 12
+        self.n_joints_part['RightIndex'] = 12
+        self.n_joints_part['RightMiddle'] = 12
+        self.n_joints_part['RightRing'] = 12
+        self.n_joints_part['RightPinky'] = 12
 
         self.n_joints_part['LeftFoot'] = 9
         self.n_joints_part['RightFoot'] = 9
@@ -400,7 +400,7 @@ Definition:
 class JointDefV3:
     def __init__(self) -> None:
         self.n_joints_part = {}
-        self.n_joints_part['entire'] = 45
+        self.n_joints_part['Full_Body'] = 45
         self.n_joints_part['torso'] = 21
         self.n_joints_part['limb'] = 18
         self.n_joints_part['leftarm'] = 18

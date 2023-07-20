@@ -1,0 +1,9 @@
+135674
+MPJPE(mean): 112.6285563150 mm
+135674
+Model:  ckpt\sample2std_V3_ChoreoMaster_train_angle_01_2060
+Torso MPJPE(mean): 54.6848874232 mm
+Left arm MPJPE(mean): 109.0922702082 mm
+Right arm MPJPE(mean): 115.6003620021 mm
+Left leg MPJPE(mean): 59.1853496630 mm
+Right leg MPJPE(mean): 59.3276189161 mm

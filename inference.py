@@ -120,6 +120,22 @@ class Inference:
             result = torch.cat((result, test[:, -tail:, :]), 1)
         result = result.view((-1,dim))
         return result
+    
+    # def insert_motion(self, dim, model, data):
+    #     test = data.to(self.DEVICE)
+    #     test = test.view((1,-1,dim))
+    #     ran = int(self.inp_len/2)
+    #     result = test[:, :ran, :]
+    #     for j in range(0, len(data)-(self.inp_len+self.out_len), self.out_len):
+    #         missing_data = torch.ones_like(test[:, 0:self.out_len, :])
+    #         inp = torch.cat((result[:, j:j+ran, :], missing_data, test[:, j+ran+self.out_len:j+self.inp_len+self.out_len, :]), 1)
+    #         out, _, _ = model(inp, self.inp_len+self.out_len, self.inp_len+self.out_len)                 
+    #         result = torch.cat((result, out[:, ran:ran+self.out_len, :]), 1)  
+    #     tail = len(data) - len(result.view((-1,dim)))
+    #     if tail > 0:
+    #         result = torch.cat((result, test[:, -tail:, :]), 1)
+    #     result = result.view((-1,dim))
+    #     return result
 
     def get_result(self, data, model, part):
         dim = self.joint_def.n_joints_part[part]

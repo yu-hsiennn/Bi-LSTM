@@ -1,7 +1,7 @@
 import os, pickle
 import numpy as np
 
-file_name = "angle_choreo_all_1205_ca_01"
+file_name = "all_2349"
 save_path = "unity_txt_file"
 
 def read(file):
@@ -35,10 +35,10 @@ def list2txt(save_path, data_list):
 GT_data = read(f"{file_name}_ori.pkl")
 model_data = read(f"{file_name}.pkl")
 
-print("---------GT data---------")
-print_list(GT_data)
-print("---------model data----------")
-print_list(model_data)
+# print("---------GT data---------")
+# print_list(GT_data)
+# print("---------model data----------")
+# print_list(model_data)
 
 list2txt(f"{save_path}/{file_name}_ori.txt", Data_processing(GT_data))
 list2txt(f"{save_path}/{file_name}.txt", Data_processing(model_data))

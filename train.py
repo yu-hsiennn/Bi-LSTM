@@ -73,6 +73,7 @@ class Train():
         E_l = vae.Encoder_latent(inp = 512)
         D_l = vae.Decoder_latent()            
         model = vae.MTGVAE(E_L, D_L, E_l, D_l).to(DEVICE)
+        # model = vae.CVAE(E_L, D_L, E_l, D_l).to(DEVICE)
         model = model.to(DEVICE)
 
         return model
@@ -97,8 +98,11 @@ class Train():
                 x = x.to(DEVICE)
                 optimizer.zero_grad()
                 out, mean, log_var = model(x, self.inp_len+self.out_len, self.inp_len+self.out_len)
+                # cond = torch.randn(1, 10).to(DEVICE)
+                # out, mean, log_var = model(x, cond, self.inp_len+self.out_len, self.inp_len+self.out_len)
                 loss_angle, loss_vel, loss_kl = self.total_loss(x_np, out, y.to(DEVICE), self.inp_len+self.out_len, mean, log_var)
                 loss_ = loss_angle + loss_vel + loss_kl
+                # loss_ = loss_angle + loss_vel + (loss_kl * 100)
                 
                 loss_dict['angle'].update(loss_angle.item(), x.size(0))
                 loss_dict['vel'].update(loss_vel.item(), x.size(0))
@@ -121,7 +125,8 @@ class Train():
                 out, mean, log_var = model(x, self.inp_len+self.out_len, self.inp_len+self.out_len)
                 
                 loss_angle, loss_vel, loss_kl = self.total_loss(x_np, out, y.to(DEVICE), self.inp_len+self.out_len, mean, log_var)
-                loss_ = loss_angle + loss_vel +loss_kl
+                loss_ = loss_angle + loss_vel + loss_kl
+                # loss_ = loss_angle + loss_vel + (loss_kl * 100)
                 
                 loss_dict['angle'].update(loss_angle.item(), x.size(0))
                 loss_dict['vel'].update(loss_vel.item(), x.size(0))
@@ -137,7 +142,7 @@ class Train():
                 torch.save(model, model_path + "/last.pth")
             result = "Part = {}, Epoch = {:3}/{}, train_loss = {:10}, test_loss = {:10}".format(part, epoch+1, epochs, round(train_loss, 7), round(losses.avg, 7))
             loss_list.append([round(train_loss, 7), round(losses.avg, 7)])
-            loss_detail.append([round(epoch_loss[0],7), round(epoch_loss[1],7), round(epoch_loss[2],7), round(loss_dict['angle'].avg, 7), round(loss_dict['vel'].avg, 7), round(loss_dict['vel'].avg, 7)])
+            loss_detail.append([round(epoch_loss[0],7), round(epoch_loss[1],7), round(epoch_loss[2],7), round(loss_dict['angle'].avg, 7), round(loss_dict['vel'].avg, 7), round(loss_dict['kl'].avg, 7)])
             print('Using device:', DEVICE)
             print(result)
             self.save_result(model_path, result)
